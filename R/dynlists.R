@@ -56,7 +56,6 @@ print.dynlist <- function(x, ...) {
   if (x$length > 10L) cat("...\n")
 }
 
-#'
 #' @export
 `[[.dynlist` <- function(i) {
   x$get_element(i)
