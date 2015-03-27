@@ -52,3 +52,19 @@ iterator <- function(object, ...) {
 iterator.default <- function(object, ...) {
   basic_iterator_generator$new(object)
 }
+
+##' @export
+iterator.data.frame <- function(object, j,  by.row = TRUE, ...) {
+    if (by.row) {
+        if (missing(j)) {
+            j <- seq_len(ncol(object))
+        }
+        data.frame_iterator_generator$new(object, j)
+    } else {
+        if (! missing(j)) {
+            warning("j is ignored when iterating over columns")
+        }
+        basic_iterator_generator$new(object)
+
+    }
+}
