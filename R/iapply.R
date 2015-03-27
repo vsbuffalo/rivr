@@ -20,17 +20,20 @@ iapply.default <- function(x, fun, ...) {
   out <- dynlist()
   i <- 1L
   break_now <- FALSE
-  while (not_empty(x)) {
-    el <- x$yield()
+  while (TRUE) {
+    #browser()
+    el <- tryCatch(x$yield(),
+                   StopIteration=function(e) break_now <<- TRUE)
+    if (break_now) break
     out$append(fun(el, ...))
     i <- i + 1L
   }
   out
 }
 
-
-iapply.file_iterator <- function(x, fun, ...) {
-  
-}
+#
+#iapply.file_iterator <- function(x, fun, ...) {
+#  
+#}
 
 

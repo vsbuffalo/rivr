@@ -13,3 +13,11 @@ test_that("basic", {
   rm(it)
   gc()
 })
+
+test_that("basic file iapply", {
+  filename <- "../../DESCRIPTION"
+  it <- file_iterator(filename)
+  # have to use as.list for now;
+  browser()
+  expect_that(iapply(it, function(x) x), equals(as.list(readLines(filename))))
+})
