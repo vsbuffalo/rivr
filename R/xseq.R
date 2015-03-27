@@ -1,5 +1,5 @@
 xseq_factory <- R6::R6Class(
-  "xseq",
+  c("xseq", "iterator"),
 
   public=list(
     len=NULL,
