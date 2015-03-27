@@ -1,0 +1,46 @@
+---
+title: "Benchmark Dynamic Lists"
+author: "Vince Buffalo"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+
+```{r
+
+library(microbenchmark)
+
+list_size <- seq(10, 100000, by=5000)
+
+list_res <- lapply(list_size, function(i) {
+  mb <- microbenchmark(
+  rlist={
+    lst <- list()
+    for (j in seq_len(i)) {
+      lst <- c(lst, j)
+    }
+  },
+  dynlist={
+    lst <- dynlist()
+    for (j in seq_len(i)) {
+      lst$append(j)
+    }
+  }, times=10)
+  class(mb) <- "data.frame"
+  mb$i <- i
+  mb
+})
+
+res <- do.call(rbind, list_res)
+
+ggplot(res, aes(x=i, y=time, color=expr)) + geom_point() + geom_smooth()
+
+```
+
+
+
+

@@ -1,5 +1,5 @@
 ##' @importFrom R6 R6Class
-basic_iterator_generator <- R6::R6Class(
+basic_iterator_factory <- R6::R6Class(
   "iterator",
   public=list(
     data=NULL,
@@ -19,23 +19,20 @@ basic_iterator_generator <- R6::R6Class(
       self$counter <- self$counter + 1L
       ret
     }),
+
   active=list(
     is_complete=function(value) {
+      if (!missing(value)) {
+        stop("field is read-only")
+      }
       self$counter > self$length
     },
 
     length=function(value) {
       if (!missing(value)) {
-        stop("read only function")
+        stop("field is read-only")
       }
       length(self$data)
-    },
-
-    nremaining=function(value) {
-      if (!missing(value)) {
-        stop("read only function")
-      }
-      self$length - self$counter + 1L
     }
   ))
 
@@ -50,7 +47,7 @@ iterator <- function(object, ...) {
 
 ##' @export
 iterator.default <- function(object, ...) {
-  basic_iterator_generator$new(object)
+  basic_iterator_factory$new(object)
 }
 
 ##' @export
