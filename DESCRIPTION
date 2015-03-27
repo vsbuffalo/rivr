@@ -1,5 +1,5 @@
-Package: itertools
-Title: What the Package Does (one line, title case)
+Package: rivr
+Title: Streams and Iterators, for a river of flowing data
 Version: 0.0.0.9000
 Authors@R: 'Vince Buffalo <vsbuffaloAAAAA@gmail.com> [aut, cre]'
 Description: What the package does (one paragraph)

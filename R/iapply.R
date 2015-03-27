@@ -1,3 +1,9 @@
+## iapply methods
+
+# @export
+iapply <- function(x, fun, ...) {
+  UseMethod("iapply")
+}
 
 
 #' Iterator apply
@@ -7,17 +13,24 @@
 #'
 #' @param ... optional arguments to \code{fun}
 #' @export
-iapply <- function(x, fun, ...) {
+iapply.default <- function(x, fun, ...) {
   # TODO: type introspection
   # TODO: x$length is probably not the right thing here - e.g., half
   # complete iterator.
-  out <- vector("list", length=x$length)
+  out <- dynlist()
   i <- 1L
-  while (!x$is_complete) {
-    out[[i]] <- fun(x$yield(), ...)
+  break_now <- FALSE
+  while (not_empty(x)) {
+    el <- x$yield()
+    out$append(fun(el, ...))
     i <- i + 1L
   }
   out
+}
+
+
+iapply.file_iterator <- function(x, fun, ...) {
+  
 }
 
 

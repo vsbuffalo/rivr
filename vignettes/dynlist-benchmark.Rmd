@@ -12,11 +12,14 @@ vignette: >
 
 ```{r
 
+library(ggplot2)
 library(microbenchmark)
+library(parallel)
+options(mc.cores=3)
 
-list_size <- seq(10, 100000, by=5000)
+list_size <- seq(1000, 100000, by=10000)
 
-list_res <- lapply(list_size, function(i) {
+list_res <- mclapply(list_size, function(i) {
   mb <- microbenchmark(
   rlist={
     lst <- list()
@@ -37,9 +40,14 @@ list_res <- lapply(list_size, function(i) {
 
 res <- do.call(rbind, list_res)
 
-ggplot(res, aes(x=i, y=time, color=expr)) + geom_point() + geom_smooth()
+p <- ggplot(res, aes(x=i, y=time, color=expr)) + geom_point() + geom_smooth(se=FALSE)
+p <- p + scale_y_log10()
+p <- p + scale_x_log10()
+p
 
 ```
+
+
 
 
 

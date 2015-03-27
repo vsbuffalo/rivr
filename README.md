@@ -1,4 +1,7 @@
-# itertools
+# 
+
+[![Travis-CI Build Status](https://travis-ci.org/vsbuffalo/rivr.png?branch=master)](https://travis-ci.org/vsbuffalo/rivr)
+
 
 # iterator requirements:
 

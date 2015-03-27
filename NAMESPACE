@@ -2,6 +2,7 @@
 
 S3method(iterator,default)
 export(distribution_iterator)
+export(dynlist)
 export(functional_iterator)
 export(iapply)
 export(is_complete)

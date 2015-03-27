@@ -33,6 +33,11 @@ dynlist_factory <- R6::R6Class(
       if (self$length + n > self$size) self$grow()
       self$data[self$length:(self$length + n)] <- vals
       self$length <- self$length + n
+    },
+
+    get_element=function(i) {
+      if (i > x$length) stop("index out of range")
+      self$data[[i]]
     }
 
   ))
@@ -42,6 +47,7 @@ dynlist <- function(...) {
   dynlist_factory$new(...)
 }
 
+#' @export
 print.dynlist <- function(x, ...) {
   # TODO: make this prettier
   cat(sprintf("dynlist (size: %d, length: %d)\n", x$size, x$length))
@@ -49,6 +55,20 @@ print.dynlist <- function(x, ...) {
   print(x$data[1:nprint])
   if (x$length > 10L) cat("...\n")
 }
+
+#'
+#' @export
+`[[.dynlist` <- function(i) {
+  x$get_element(i)
+}
+
+
+
+
+
+
+
+
 
 
 
