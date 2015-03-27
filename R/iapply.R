@@ -9,6 +9,8 @@
 #' @export
 iapply <- function(x, fun, ...) {
   # TODO: type introspection
+  # TODO: x$length is probably not the right thing here - e.g., half
+  # complete iterator.
   out <- vector("list", length=x$length)
   i <- 1L
   while (!x$is_complete) {

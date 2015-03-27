@@ -10,6 +10,8 @@ iapply(x, fun, ...)
 \item{x}{an iterator object}
 
 \item{fun}{the function to be applied to each element}
+
+\item{...}{optional arguments to \code{fun}}
 }
 \description{
 Iterator apply
