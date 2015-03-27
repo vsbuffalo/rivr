@@ -3,7 +3,7 @@ functional_iterator_factory <- R6::R6Class(
 
   public=list(
     f=NULL,
-    length=NA_integer_,
+    length=Inf,
     is_complete=FALSE,
 
     initialize=function(f, ...) {
