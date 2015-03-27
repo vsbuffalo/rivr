@@ -2,5 +2,6 @@
 
 S3method(iterator,default)
 export(iapply)
+export(is_complete)
 export(iterator)
 importFrom(R6,R6Class)
