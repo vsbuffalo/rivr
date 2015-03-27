@@ -1,6 +1,5 @@
 ##' @importFrom R6 R6Class
-
-iterator_generator <- R6::R6Class(
+basic_iterator_generator <- R6::R6Class(
   "iterator",
   public=list(
     data=NULL,
@@ -40,9 +39,16 @@ iterator_generator <- R6::R6Class(
     }
   ))
 
-
-iterator <- function(...) {
-  iterator_generator$new(...)
+##' Construct a general iterator
+##' @title Construct a general iterator
+##' @param object Any R object
+##' @param ... additional parameters
+##' @export
+iterator <- function(object, ...) {
+  UseMethod("iterator")
 }
-## reversed <- function(it) {
-## }
+
+##' @export
+iterator.default <- function(object, ...) {
+  basic_iterator_generator$new(object)
+}
