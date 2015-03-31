@@ -7,6 +7,7 @@ functional_iterator_factory <- R6::R6Class(
     is_complete=FALSE,
 
     initialize=function(f, ...) {
+      force(f)
       self$f <- function() f(...)
     },
 

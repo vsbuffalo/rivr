@@ -13,7 +13,7 @@ basic_iterator_factory <- R6::R6Class(
     yield=function() {
       if (self$is_complete) {
         ## TODO: use classed exceptions to be more python
-        stop("already done")
+        stop(StopIteration("iteration complete"))
       }
       ret <- self$data[[self$counter]]
       self$counter <- self$counter + 1L

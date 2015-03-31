@@ -4,19 +4,19 @@ transform_iterator_factory <- R6::R6Class(
 	public = list(
 		it = NULL,
 		f = NULL,
+		## Here, could use active binding functions that pass
+                ## to iterator?
 		length = NA_integer_,
-		is_complete = FALSE,
+		is_complete = NA,
 
 		initialize = function(it, f, ...) {
+			force(f)
 			self$it <- it
 			self$f <- function(x) f(x, ...)
-			self$length <- it$length
 		},
 
 		yield = function() {
-			x <- self$f(self$it$yield())
-			self$is_complete <- self$it$is_complete
-			x
+                  self$f(self$it$yield())
 		}
 	))
 
