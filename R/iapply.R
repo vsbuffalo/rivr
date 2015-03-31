@@ -6,7 +6,7 @@
 #' @param fun the function to be applied to each element
 #'
 #' @param ... optional arguments to \code{fun}
-# @export
+#' @export
 iapply <- function(x, fun, ...) {
   UseMethod("iapply")
 }
