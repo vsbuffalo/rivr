@@ -20,3 +20,12 @@ drain <- function(x) {
 as.list.iterator <- function(x, ...) {
   drain(x)
 }
+
+## Or implement by terminating iterator -> drain?
+collect <- function(it, n) {
+  ret <- vector("list", n)
+  for (i in seq_len(n)) {
+    ret[[i]] <- it$yield()
+  }
+  ret
+}
