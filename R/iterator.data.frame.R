@@ -12,7 +12,7 @@ data.frame_iterator_generator <- R6::R6Class(
 
         yield = function(j) {
             if (self$is_complete) {
-                stop("already done")
+                stop(StopIteration("data.frame is complete"))
             }
 
             ret <- self$data[self$counter, j]

@@ -9,5 +9,5 @@ test_that("basic data.frame", {
   for (i in seq_len(nrow(d))) {
     expect_that(it$yield(), equals(d[i,]))
   }
-  expect_that(it$yield(), throws_error("done"))
+  expect_that(it$yield(), throws_error("data.frame is complete"))
 })

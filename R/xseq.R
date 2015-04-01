@@ -12,7 +12,7 @@ xseq_factory <- R6::R6Class(
 
     yield=function() {
       if (self$is_complete) {
-        stop("sequence is complete")
+        stop(StopIteration("sequence is complete"))
       }
       ret <- self$current
       self$current <- self$current + 1L
