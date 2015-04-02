@@ -29,3 +29,13 @@ transform_iterator_factory <- R6::R6Class(
 transform_iterator <- function(it, f, ...) {
 	transform_iterator_factory$new(it, f, ...)
 }
+
+##' Create lazy pipe
+##' @title Create lazy pipe
+##' @param it Iterator
+##' @param f Function
+##' @rdname lazy_pipe
+##' @export
+`%|%` <- function(it, f) {
+  transform_iterator(it, f)
+}

@@ -1,3 +1,5 @@
+## TODO: Need a function to organise doing the combination, rather
+## than just list (from lapply)
 zip_iterator_factory <- R6::R6Class(
   c("zip_iterator", "iterator"),
 

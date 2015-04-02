@@ -44,6 +44,8 @@ as.list.iterator <- function(x, ...) {
 }
 
 ## Or implement by terminating iterator -> drain?
+## take would be better name? (conflicts with plyr::take)
+## Behaviour on StopIteration?
 collect <- function(it, n) {
   ret <- vector("list", n)
   for (i in seq_len(n)) {
