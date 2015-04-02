@@ -3,6 +3,28 @@
 ##' @param x An iterator/stream object
 ##' @export
 drain <- function(x) {
+  if (!rivr_trait_length_finite(x)) {
+    stop(InfiniteStream())
+  }
+  if (rivr_trait_length_known(x)) {
+    drain.length_known(x)
+  } else {
+    drain.default(x)
+  }
+}
+
+## This won't work for current implementations of xseq and data.frame
+## because we don't know how long they have to go.
+drain.length_known <- function(x) {
+  n <- x$remaining()
+  out <- vector("list", n)
+  for (i in seq_len(n)) {
+    out[[i]] <- x$yield()
+  }
+  out
+}
+
+drain.default <- function(x) {
   out <- dynlist()
   break_now <- FALSE
   repeat {

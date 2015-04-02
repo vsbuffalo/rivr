@@ -21,6 +21,10 @@ xseq_factory <- R6::R6Class(
 
     reset=function() {
       self$current <- 1L
+    },
+
+    remaining=function() {
+      self$len - self$current + 1L
     }
   ),
 
