@@ -88,7 +88,8 @@ print.dynlist <- function(x, ...) {
 }
 
 #' @export
-`[[.dynlist` <- function(i) {
+`[[.dynlist` <- function(x, i) {
+  ## NOTE: Untested (was broken)
   x$get_element(i)
 }
 

@@ -24,16 +24,20 @@ transform_iterator_factory <- R6::R6Class(
 ##'
 ##' Apply the function f to the elements of it
 ##' @param it An iterator
-##' @param f A function
+##' @param fun A function
+##' @param ... Additional arguments to \code{fun}
 ##' @export
-transform_iterator <- function(it, f, ...) {
-	transform_iterator_factory$new(it, f, ...)
+transform_iterator <- function(it, fun, ...) {
+	transform_iterator_factory$new(it, fun, ...)
 }
 
 ##' Create lazy pipe
 ##' @title Create lazy pipe
 ##' @param it Iterator
-##' @param f Function
+##' @param fun Function
 ##' @rdname lazy_pipe
+##' @name lazy_pipe
 ##' @export
-`%|%` <- transform_iterator
+`%|%` <- function(it, fun) {
+  transform_iterator(it, fun)
+}

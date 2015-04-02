@@ -1,4 +1,4 @@
 library(testthat)
-library(itertools)
+library(rivr)
 
-test_check("itertools")
+test_check("rivr")

@@ -4,10 +4,12 @@
 \alias{functional_iterator}
 \title{Functional iterator}
 \usage{
-functional_iterator(f, ...)
+functional_iterator(fun, ...)
 }
 \arguments{
-\item{f}{A function}
+\item{fun}{A function}
+
+\item{...}{Additional arguments to \code{fun}}
 }
 \description{
 Functional iterator

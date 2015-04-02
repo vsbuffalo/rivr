@@ -18,17 +18,19 @@ functional_iterator_factory <- R6::R6Class(
 
 ##' Functional iterator
 ##' @title Functional iterator
-##' @param f A function
+##' @param fun A function
+##' @param ... Additional arguments to \code{fun}
 ##' @export
-functional_iterator <- function(f, ...) {
-  functional_iterator_factory$new(f, ...)
+functional_iterator <- function(fun, ...) {
+  functional_iterator_factory$new(fun, ...)
 }
 
 ##' Distribution iterator
 ##' @title Distribution iterator
-##' @param f A distribution function
+##' @param fun A distribution function
 ##' @param n Number of things to sample. I am so sorry.
+##' @param ... Additional arguments to \code{fun}
 ##' @export
-distribution_iterator <- function(f, n=1, ...) {
-  functional_iterator(f, n=n, ...)
+distribution_iterator <- function(fun, n=1, ...) {
+  functional_iterator(fun, n=n, ...)
 }

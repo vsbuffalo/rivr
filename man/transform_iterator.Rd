@@ -4,12 +4,14 @@
 \alias{transform_iterator}
 \title{Transform iterator}
 \usage{
-transform_iterator(it, f, ...)
+transform_iterator(it, fun, ...)
 }
 \arguments{
 \item{it}{An iterator}
 
-\item{f}{A function}
+\item{fun}{A function}
+
+\item{...}{Additional arguments to \code{fun}}
 }
 \description{
 Apply the function f to the elements of it

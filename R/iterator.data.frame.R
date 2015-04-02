@@ -46,7 +46,6 @@ iterator.data.frame <- function(object, j,  by.row = TRUE, ...) {
         if (! missing(j)) {
             warning("j is ignored when iterating over columns")
         }
-        basic_iterator_generator$new(object)
-
+        basic_iterator_factory$new(object)
     }
 }

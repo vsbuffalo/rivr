@@ -4,12 +4,14 @@
 \alias{distribution_iterator}
 \title{Distribution iterator}
 \usage{
-distribution_iterator(f, n = 1, ...)
+distribution_iterator(fun, n = 1, ...)
 }
 \arguments{
-\item{f}{A distribution function}
+\item{fun}{A distribution function}
 
 \item{n}{Number of things to sample. I am so sorry.}
+
+\item{...}{Additional arguments to \code{fun}}
 }
 \description{
 Distribution iterator

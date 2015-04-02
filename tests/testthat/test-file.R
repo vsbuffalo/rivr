@@ -1,7 +1,7 @@
 context("file_iterator")
 
 test_that("basic", {
-  filename <- "../../DESCRIPTION"
+  filename <- "test-file.R"
   it <- file_iterator(filename)
 
   cmp <- readLines(filename)
@@ -15,7 +15,7 @@ test_that("basic", {
 })
 
 test_that("basic file iapply", {
-  filename <- "../../DESCRIPTION"
+  filename <- "test-file.R"
   it <- file_iterator(filename)
   # have to use as.list for now;
   ## browser()
