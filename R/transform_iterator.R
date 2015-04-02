@@ -36,6 +36,4 @@ transform_iterator <- function(it, f, ...) {
 ##' @param f Function
 ##' @rdname lazy_pipe
 ##' @export
-`%|%` <- function(it, f) {
-  transform_iterator(it, f)
-}
+`%|%` <- transform_iterator
